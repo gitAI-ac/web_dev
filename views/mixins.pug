@@ -1,0 +1,41 @@
+mixin overviewBox(label,text,icon)
+    .overview-box__detail
+        svg.overview-box__icon
+            use(xlink:href=`/img/icons.svg#icon-${icon}`)
+        span.overview-box__label= label
+        span.overview-box__text= text
+
+mixin guides(role,name,image)
+    .overview-box__detail
+        img.overview-box__img(src=`/img/users/${image}`, alt=`${role}`)
+        - if (role==='lead-guide')
+            span.overview-box__label Lead Guide
+        - if (role==='guide')
+            span.overview-box__label Tour Guide
+        span.overview-box__text= name
+
+
+
+mixin starRating(number)
+    - let n = Math.floor(number * 1)
+    while n > 0
+        svg.reviews__star.reviews__star--active
+            use(xlink:href='/img/icons.svg#icon-star')
+        - n--;
+    - n = (number*1) - Math.floor(number*1)
+    - if(n > 0)
+        svg.reviews__star.reviews__star--half(style=`--opacity: ${n*0.9}`)
+            use(xlink:href='/img/icons.svg#icon-star')
+    - n = 5 - Math.ceil(number * 1)
+    while n > 0
+        svg.reviews__star.reviews__star--inactive
+            use(xlink:href='/img/icons.svg#icon-star')
+        - n--;
+
+
+mixin userpagenav(link, text, icon, active)
+    li(class=(active) ? 'side-nav--active' : '')
+        a(href=`${link}`)
+            svg
+                use(xlink:href=`img/icons.svg#icon-${icon}`)
+            | #{text}
