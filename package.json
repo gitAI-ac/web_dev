@@ -4,8 +4,8 @@
   "description": "learning node, express, and mongo db",
   "main": "app.js",
   "scripts": {
-    "start": "node serverprod.js",
-    "start:dev": "node server.js",
+    "start": "node server.js",
+    "start:prod": "node serverprod.js",
     "debug": "ndb server.js",
     "watch:js": "parcel watch ./public/js/index.js --out-dir ./public/js --out-file bundle.js --no-source-maps",
     "build:js": "parcel build ./public/js/index.js --out-dir ./public/js --out-file bundle.js --no-source-maps"
