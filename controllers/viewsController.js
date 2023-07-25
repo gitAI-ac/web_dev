@@ -22,12 +22,13 @@ exports.getTour = catchAsync(async (req, res, next) => {
   });
   /*res.status(200).json({
     status: 'success',
-    data: tour.review,
+    data: tour,
   });*/
 
   if (!tour) {
     return next(new AppError('Cannot find the tour', 404));
   }
+
   res.status(200).render('tour', {
     title: `${tour.name} Tour`,
     tour,
